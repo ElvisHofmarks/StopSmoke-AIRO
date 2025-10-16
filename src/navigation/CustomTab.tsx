@@ -29,12 +29,12 @@ const CustomTab: React.FC<CustomTabProps> = ({
             const isFocused = state.index === index;
             const icon =
               route.name === 'Dashboard'
-                ? ImagePath.Dashboard
-                : route.name === 'NewTask'
-                ? ImagePath.NewTask
+                ? ImagePath.Home
+                : route.name === 'Progress'
+                ? ImagePath.Progress
                 : route.name === 'Settings'
                 ? ImagePath.Settings
-                : ImagePath.Dashboard;
+                : ImagePath.Home;
 
             const onPress = () => {
               if (!isFocused) {
@@ -49,32 +49,29 @@ const CustomTab: React.FC<CustomTabProps> = ({
                 key={route.name}
               >
                 <View style={styles.iconContainer}>
-                  {route.name === 'NewTask' ? (
-                    <Image source={icon}  style={{bottom:8}}/>
-                  ) : (
-                    <Image
-                      source={icon}
-                      tintColor={
-                        isFocused
-                          ? 'rgba(99, 102, 241, 1)'
-                          : 'rgba(156, 163, 175, 1)'
-                      }
-                    />
-                  )}
+                  <Image
+                    source={icon}
+                    tintColor={
+                      isFocused
+                        ? 'rgba(16, 185, 129, 1)'
+                        : 'rgba(156, 163, 175, 1)'
+                    }
+                  />
+
                   <Text
                     style={[
                       styles.tabText,
                       {
                         color: isFocused
-                          ? 'rgba(99, 102, 241, 1)'
+                          ? 'rgba(16, 185, 129, 1)'
                           : 'rgba(156, 163, 175, 1)',
                       },
                     ]}
                   >
                     {route.name === 'Dashboard'
                       ? 'Home'
-                      : route.name === 'NewTask'
-                      ? ''
+                      : route.name === 'Progress'
+                      ? 'Progress'
                       : route.name === 'Settings'
                       ? 'Settings'
                       : 'NewTask'}
@@ -107,8 +104,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: wp(8),
     height: wp(25),
-    borderTopColor:"rgba(243, 244, 246, 1)",
-    borderTopWidth:1
   },
   iconContainer: {
     alignItems: 'center',
@@ -129,10 +124,10 @@ const styles = StyleSheet.create({
   tabText: {
     fontWeight: '500',
     fontSize: 12,
-    fontFamily: FONTS.medium,
+    fontFamily: FONTS.Inter_18pt_Medium,
     color: 'rgba(156, 163, 175, 1)',
   },
   activeText: {
     color: 'rgba(255, 255, 255, 1)',
-  }
+  },
 });
