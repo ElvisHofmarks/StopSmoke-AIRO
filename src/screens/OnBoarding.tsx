@@ -59,6 +59,35 @@ const OnBoarding = ({ navigation }: any) => {
         <View style={styles.titleContainer}>
           <Text style={styles.subtitle}>{item.subtitle}</Text>
         </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop:wp(10)
+          }}
+        >
+          {[1, 2, 3].map((item, index) => (
+            <View key={index} style={styles.dotContainer}>
+              <View
+                style={[
+                  styles.dot,
+                  {
+                    backgroundColor:
+                      currentIndex === index
+                        ? 'rgba(32, 178, 170, 1)'
+                        : 'white',
+                    borderColor:
+                      currentIndex === index
+                        ? 'rgba(32, 178, 170, 1)'
+                        : 'rgba(209, 213, 219, 1)',
+                  },
+                ]}
+              />
+            </View>
+          ))}
+        </View>
       </View>
     );
   };
@@ -96,11 +125,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   slideWrapper: {
-    marginTop: wp(20),
+    marginTop: wp(25),
     flex: 1,
   },
   imageContainer: {
     alignItems: 'center',
+    marginTop: wp(3),
   },
   titleContainer: {
     marginTop: wp(15),
@@ -112,9 +142,9 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     textAlign: 'center',
     fontFamily: FONTS.Inter_18pt_Black,
-    marginHorizontal: 30,
+    marginHorizontal: 45,
     marginBottom: 5,
-    paddingVertical:20
+    paddingVertical: 30,
   },
   subtitle: {
     color: 'rgba(26, 54, 93, 1)',
@@ -122,7 +152,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     textAlign: 'center',
     fontFamily: FONTS.Inter_18pt_Regular,
-    marginHorizontal: 50,
+    marginHorizontal: 20,
     marginBottom: 40,
   },
   bottomContainer: {
@@ -143,6 +173,19 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 18,
     fontFamily: FONTS.Inter_18pt_Medium,
+  },
+  dotContainer: {
+    width: 10,
+    height: 10,
+    marginHorizontal: 5,
+    borderRadius: 20,
+  },
+  dot: {
+    width: 11,
+    height: 11,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(209, 213, 219, 1)',
   },
 });
 
