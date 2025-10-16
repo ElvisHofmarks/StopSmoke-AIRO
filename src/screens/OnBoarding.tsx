@@ -17,14 +17,13 @@ const OnBoarding = ({ navigation }: any) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const dispatch = useDispatch();
 
-  const handleCompleteOnboarding = async () => {
-    dispatch(setOnBoarding(true));
-    navigation.navigate('Home');
-  };
-
-  const handleAddToMyDay = () => {
-    dispatch(setOnBoarding(true));
-    navigation.navigate('Home');
+  const completeOnboarding = async () => {
+    if (currentIndex < list.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      dispatch(setOnBoarding(true));
+      navigation.navigate('Home');
+    }
   };
 
   const list = [
@@ -50,13 +49,15 @@ const OnBoarding = ({ navigation }: any) => {
   const renderItem = ({ item, index }: { item: any; index: number }) => {
     return (
       <View style={styles.slideContainer}>
+        <Image source={ImagePath.watermark} />
+
+        <Text style={styles.title}>{item.title}</Text>
+
         <View style={styles.imageContainer}>
           <Image source={item.image} />
         </View>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{item.title}</Text>
           <Text style={styles.subtitle}>{item.subtitle}</Text>
-          <Text style={styles.description}>{item.description}</Text>
         </View>
       </View>
     );
@@ -71,18 +72,11 @@ const OnBoarding = ({ navigation }: any) => {
 
         <View style={styles.bottomContainer}>
           <TouchableOpacity
-            onPress={() => setCurrentIndex(currentIndex + 1)}
+            onPress={() => completeOnboarding()}
             style={styles.startButton}
           >
-            <Text style={styles.startButtonText}>Start Mindful Journey</Text>
+            <Text style={styles.startButtonText}>NEXT</Text>
           </TouchableOpacity>
-
-          <Text
-            onPress={() => handleCompleteOnboarding()}
-            style={styles.skipText}
-          >
-            Skip
-          </Text>
         </View>
       </View>
     </ScrollView>
@@ -99,60 +93,11 @@ const styles = StyleSheet.create({
   },
   slideContainer: {
     flex: 1,
-    width: wp(100),
+    alignItems: 'center',
   },
   slideWrapper: {
     marginTop: wp(20),
     flex: 1,
-  },
-  taskContainer: {
-    flex: 1,
-    marginTop: wp(20),
-  },
-  taskTitle: {
-    color: 'rgba(31, 41, 55, 1)',
-    fontSize: 24,
-    fontWeight: '700',
-    textAlign: 'center',
-    fontFamily: FONTS.medium,
-    marginHorizontal: 50,
-    marginBottom: 5,
-  },
-  taskDescription: {
-    color: 'rgba(75, 85, 99, 1)',
-    fontSize: 14,
-    fontWeight: '400',
-    textAlign: 'center',
-    fontFamily: FONTS.regular,
-    marginHorizontal: 30,
-  },
-  taskImageContainer: {
-    alignItems: 'center',
-    marginTop: wp(5),
-  },
-  helpSection: {
-    marginHorizontal: 35,
-  },
-  helpTitle: {
-    color: 'rgba(17, 24, 39, 1)',
-    fontSize: 18,
-    fontFamily: FONTS.medium,
-    fontWeight: '600',
-  },
-  benefitsContainer: {
-    gap: 20,
-    marginTop: 20,
-  },
-  benefitItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
-  },
-  benefitText: {
-    color: 'rgba(55, 65, 81, 1)',
-    fontSize: 14,
-    fontFamily: FONTS.regular,
-    fontWeight: '400',
   },
   imageContainer: {
     alignItems: 'center',
@@ -166,26 +111,19 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '700',
     textAlign: 'center',
-    fontFamily: FONTS.medium,
-    marginHorizontal: 50,
+    fontFamily: FONTS.Inter_18pt_Black,
+    marginHorizontal: 30,
     marginBottom: 5,
+    paddingVertical:20
   },
   subtitle: {
-    color: 'rgba(0, 0, 0, 1)',
+    color: 'rgba(26, 54, 93, 1)',
     fontSize: 18,
-    fontWeight: '500',
-    textAlign: 'center',
-    fontFamily: FONTS.medium,
-    marginHorizontal: 50,
-    marginBottom: 40,
-  },
-  description: {
-    color: 'rgba(75, 85, 99, 1)',
-    fontSize: 16,
     fontWeight: '400',
     textAlign: 'center',
-    fontFamily: FONTS.regular,
-    marginHorizontal: 30,
+    fontFamily: FONTS.Inter_18pt_Regular,
+    marginHorizontal: 50,
+    marginBottom: 40,
   },
   bottomContainer: {
     marginBottom: wp(10),
@@ -193,7 +131,7 @@ const styles = StyleSheet.create({
     marginTop: wp(10),
   },
   startButton: {
-    backgroundColor: 'rgba(79, 70, 229, 1)',
+    backgroundColor: 'rgba(32, 178, 170, 1)',
     padding: 16,
     borderRadius: 10,
     alignItems: 'center',
@@ -204,22 +142,7 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 1)',
     fontWeight: '600',
     fontSize: 18,
-    fontFamily: FONTS.medium,
-  },
-  skipText: {
-    color: 'rgba(107, 114, 128, 1)',
-    fontWeight: '500',
-    fontSize: 16,
-    fontFamily: FONTS.medium,
-    textAlign: 'center',
-    marginTop: 15,
-    padding: 12,
-  },
-  addToDayButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 10,
+    fontFamily: FONTS.Inter_18pt_Medium,
   },
 });
 
