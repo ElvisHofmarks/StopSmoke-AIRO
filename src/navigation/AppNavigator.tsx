@@ -10,6 +10,7 @@ import Dashboard from '../screens/Dashboard';
 import Settings from '../screens/Settings';
 import Progress from '../screens/Progress';
 import CustomTab from './CustomTab';
+import FocusChallenge from '../screens/FocusChallenge';
 
 const Stack = createNativeStackNavigator<any>();
 
@@ -23,6 +24,7 @@ const AppNavigator: React.FC = () => {
     >
       <Stack.Screen name="OnBoarding" component={OnBoarding} />
       <Stack.Screen name="Home" component={MyTabs} />
+      <Stack.Screen name="FocusChallenge" component={FocusChallenge} />
     </Stack.Navigator>
   );
 };

@@ -8,5 +8,13 @@ export default {
   Home: require('./Icons/Home.png'),
   Progress: require('./Icons/Progress.png'),
   Settings: require('./Icons/Settings.png'),
-  
+  greentike : require('./Icons/greentike.png'),
+  dollar: require('./Icons/dollar.png'),
+  heart: require('./Icons/heart.png'),
+  AIRO: require('./Icons/AIRO.png'),
+  warning: require('./Icons/warning.png'),
+  topArrow: require('./Icons/topArrow.png'),
+  radioBtn: require('./Icons/radioBtn.png'), 
+  unradioBtn: require('./Icons/unradioBtn.png'),
+  warning1: require('./Icons/warning1.png'),
 };
